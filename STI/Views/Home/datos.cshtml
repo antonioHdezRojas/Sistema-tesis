@@ -1,0 +1,23 @@
+﻿@model STI.Models.Alumno
+@{
+    ViewBag.Title = "datos";
+}
+@Html.Partial("navBar")
+
+<form action="@Url.Action("pass","home")" method="POST" role="form">
+    <legend>Datos del alumno</legend>
+
+    <div class="form-group">
+        <label for="txtCuenta">Numero de cuenta</label>
+        <input type="text" class="form-control" id="txtCuenta" disabled value="@Model.no_cuenta">
+    </div>
+    <div class="form-group">
+        <label for="txtNombre">Nombre</label>
+        <input type="text" class="form-control" id="txtNombre" disabled value="@Model.Nombre @Model.Ap_pat @Model.Ap_mat">
+    </div>
+    <div class="form-group">
+        <label for="txtPass">Contraseña</label>
+        <input type="text" class="form-control" id="txtPass">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar contraseña</button>
+</form>

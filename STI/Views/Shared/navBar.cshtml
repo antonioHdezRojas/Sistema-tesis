@@ -1,0 +1,23 @@
+﻿<nav class="navbar navbar-fixed-top fondoAzul">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="@Url.Action("datos","home")">@Session["nombre"]</a></li>
+            <li role="presentation"><a href="@Url.Action("inicio","home")">home</a></li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Encuestas <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("habitosDeEstudio","Encuesta")">Habitos de estudio</a></li>
+                    <li><a href="@Url.Action("autoestima", "Encuesta")">Autoestima</a></li>
+                    <li><a href="@Url.Action("matematicas","Encuesta")">Matematicas</a></li>
+                    <li><a href="@Url.Action("comunicacion", "Encuesta")">Comunicacion oral y escrita</a></li>
+                </ul>
+            </li>
+            <li role="presentation"><a>Resultados</a></li>
+            <li role="presentation"><a>Contacto</a></li>
+            <li role="presentation" class="pull-right"><a href="@Url.Action("salir","home")">Salir</a></li>
+        </ul>
+
+    </div>
+</nav>

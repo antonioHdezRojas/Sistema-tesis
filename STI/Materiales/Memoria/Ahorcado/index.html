@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Inicio</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="generator" content="eXeLearning 2.0.4 - exelearning.net" />
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript">$exe_i18n={show:"Mostrar",hide:"Ocultar",showFeedback:"Mostrar retroalimentación",hideFeedback:"Ocultar retroalimentación",correct:"Correcto",incorrect:"Incorrecto",menu:"Menú"}</script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body class="exe-single-page"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<header id="header"><h1></h1></header>
+<section id="main">
+<article class="node level-1-node">
+<header class="nodeDecoration"><h1 id="exenode_0_Inicio" class="nodeTitle">Inicio</h1></header>
+<article class="iDevice_wrapper HangmanIdeviceInc em_iDevice" id="id0-0">
+<div class="iDevice emphasis1">
+<div id="ta0_16" class="block iDevice_content">
+<p>Juega al ahorcado!</p>
+<p>Identifica las letras que corresponden a cada habilidad oculta entre letras</p>
+</div>
+<script src='hangman.js' type='text/javascript'></script>
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Ahorcado </h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id='hangmanhangman0messageStore' style='display: none'><div  id='hmwronghangman0'  ><div id="ta0_21" class="block iDevice_content">
+<p>Ups! No era esa</p>
+</div>
+</div><div  id='hmlosthangman0'  ><div id="ta0_22" class="block iDevice_content">
+<p>Perdiste, Quizás la siguiente vez te vaya mejor!</p>
+</div>
+</div><div  id='hmpassedhangman0'  ><div id="ta0_23" class="block iDevice_content">
+<p>Felicidades! Vas por buen camino!</p>
+</div>
+</div><div  id='hmwonhangman0'  ><div id="ta0_24" class="block iDevice_content">
+<p>Genial! Eres bueno para esto!</p>
+</div>
+</div></div><script type='text/javascript'>
+hangman_words['hangman0'] = new Array();
+hangman_buttonStyles['hangman0'] = new Array();
+hangman_words['hangman0'][0] = new Array('perseverancia', 'p r  e');
+hangman_words['hangman0'][1] = new Array('disciplina', 'dis');
+hangman_buttonStyles['hangman0'][HANGMAN_BEFORE_GUESS] = "color: white; background-color: blue;";
+hangman_buttonStyles['hangman0'][HANGMAN_CORRECT_GUESS] = "color: white; background-color : green;";
+hangman_buttonStyles['hangman0'][HANGMAN_WRONG_GUESS] = "color: white; background-color: red;";
+hangman_alphabet['hangman0'] = 'abcdefghijklmnopqrstuvwxyz';
+hangman_chanceimgids['hangman0'] = new Array();
+hangman_chanceimgids['hangman0'][0] = 'hangman0img0_17';
+playerMessages['hangman0'] = new Array();
+
+        
+        playerMessages['hangman0']['wrongguess'] = 
+            document.getElementById('hmwronghangman0').innerHTML;
+        playerMessages['hangman0']['lostlevel'] =
+            document.getElementById('hmlosthangman0').innerHTML;
+        playerMessages['hangman0']['levelpassed'] = 
+            document.getElementById('hmpassedhangman0').innerHTML;
+        playerMessages['hangman0']['gamewon'] = 
+            document.getElementById('hmwonhangman0').innerHTML;
+        </script>
+        <div id='hangman0_img'><div id='hangman0img0_17' style='display: none'><img id="img0_17" alt="img0_17" width="300" height="277" src="ahorcado.png" />
+</div></div>
+<div id="hangman0_gamearea" style='width: 600px;' class='exehangman_gamearea'>
+        <div class='exehangman_alertarea' id="hangman0_alertarea" style='position: absolute; z-index: 10; text-align: center; border: 1px; background-color: white; width: 600px; margin-top: 123px; visibility: hidden'>
+        &#160;
+        </div>
+        <div id="hangman0_imgarea" style='height: 277px; z-index: 1;' class='exehangman_imgarea'>
+        </div>
+
+        <input type='text' style='' id='hangman0_hintarea' style='width: 600px' class='exehangman_hintarea'/>
+        <input type='text' style='' id='hangman0_wordarea' style='width: 600px' class='exehangman_wordarea'/>
+        <div id="hangman0_letterarea" class='exehangman_letterarea'>
+        </div>
+        <input class='exehangman_resetbutton' type='button' value='Reintentar' style='background-color: blue; color: white;' onclick='restartLevel("hangman0")'/>
+</div>
+
+        <script type='text/javascript'>setupGame('hangman0');</script></div>
+</article>
+</article>
+</section>
+
+
+</div>
+</body></html>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "inicio";
+}
+@Html.Partial("navBar")
+<div class="row">
+    <div class="col-md-3">
+        <h4><a>Material de estudio</a></h4>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Habitos de estudio</a></li>
+            <li role="presentation"><a href="#">Autoestima</a></li>
+            <li role="presentation"><a href="#">Matematicas</a></li>
+            <li role="presentation"><a href="#">Comprension lectora</a></li>
+        </ul>
+
+    </div>
+    <div class="col-md-9">
+        <form action="@Url.Action("autoestima","Reportes")">
+            <div class="col-md-9">
+                <div class="container well">
+                    <h3>Autoestima <button class="btn-primary pull-right">Reporte</button></h3> <hr />
+                    <!--<div class="progress">
+                        <div class="progress-bar progress-bar-info" style="width: 50%">
+                            <span class="sr-only">50% Complete</span>50%
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </form>
+        <form action="@Url.Action("habEstudio","Reportes")">
+            <div class="col-md-9">
+                <div class="container well">
+                    <h3>Habitos de estudio <button class="btn-primary pull-right">Reporte</button></h3> <hr />
+                    <!--<div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: %">
+                            <span class="sr-only"></span>Escuela %
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </form>
+        <form action="@Url.Action("mate","Reportes")">
+            <div class="col-md-9">
+                <div class="container well">
+                    <h3>Matematicas<button class="btn-primary pull-right">Reporte</button></h3> <hr />
+                    <!--<div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: %">
+                            <span class="sr-only"></span>Escuela %
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </form>
+        <form action="@Url.Action("comunicacion","Reportes")">
+            <div class="col-md-9">
+                <div class="container well">
+                    <h3>Comunicación oral y escrita<button class="btn-primary pull-right">Reporte</button></h3> <hr />
+                    <!--<div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: %">
+                            <span class="sr-only"></span>Escuela %
+                        </div>
+                </div>-->
+            </div>
+    </div>
+    </form>
+    </div>
+</div>

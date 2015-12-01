@@ -1,0 +1,39 @@
+﻿@model IEnumerable<STI.Models.Pregunta>
+<table class="container table-striped">
+    <tr>
+        <td class="col-md-7"></td>
+        @for (int i = 1; i < 6; i++)
+            {
+            <td class="text-center col-md-1">@i.ToString()</td>
+        }
+    </tr>
+    @{ int j = 0;}
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td class="col-md-7">
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            @{
+                int[] valores = new int[5];
+                valores[0] = int.Parse(item.Respuesta1);
+                valores[1] = int.Parse(item.Respuesta2);
+                valores[2] = int.Parse(item.Respuesta3);
+                valores[3] = int.Parse(item.Respuesta4);
+                valores[4] = int.Parse(item.Respuesta5);
+            }
+
+            @for (int i = 0; i < 5; i++)
+            {
+                string pregunta = item.PreguntaId.ToString();
+                <td class="col-md-1 text-center">
+                    <input type="radio" name="@Html.Name(pregunta)" id="@Html.Id("v" + pregunta)" onclick="guardar(@pregunta,@valores[i])">
+                </td>
+            }
+        </tr>
+                    j++;
+    }
+</table>
+
+

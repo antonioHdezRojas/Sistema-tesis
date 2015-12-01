@@ -1,0 +1,22 @@
+﻿@model IEnumerable<STI.Models.Pregunta>
+@Html.Partial("navBar")
+@foreach (var pregunta in Model)
+{
+    int[] orden = ViewBag.ordenResp;
+    string[] resp = new string[4] { pregunta.Respuesta1, pregunta.Respuesta2, pregunta.Respuesta3, pregunta.Respuesta4 };
+    <div class="container well">               
+            <p style="text-align:justify">@Html.Raw(pregunta.Descripcion)<br /></p>
+        <ul>
+            <li><input type="radio" name="v+@Html.Name(pregunta.PreguntaId.ToString())" id="@Html.Id("r" + resp[orden[0]])" onclick="guardar(@pregunta.PreguntaId,@orden[0]+1)"> @Html.Raw(resp[orden[0]])</li>
+            <li><input type="radio" name="v+@Html.Name(pregunta.PreguntaId.ToString())" id="@Html.Id("r" + resp[orden[1]])" onclick="guardar(@pregunta.PreguntaId,@orden[1]+1)"> @Html.Raw(resp[orden[1]])</li>
+            <li><input type="radio" name="v+@Html.Name(pregunta.PreguntaId.ToString())" id="@Html.Id("r" + resp[orden[2]])" onclick="guardar(@pregunta.PreguntaId,@orden[2]+1)"> @Html.Raw(resp[orden[2]])</li>
+            <li><input type="radio" name="v+@Html.Name(pregunta.PreguntaId.ToString())" id="@Html.Id("r" + resp[orden[3]])" onclick="guardar(@pregunta.PreguntaId,@orden[3]+1)"> @Html.Raw(resp[orden[3]])</li>            
+        </ul>
+    </div>
+ }
+<div id="page-selection">
+    <ul class="pager">
+        <li class="previous"><a href="#">&larr; Anterior</a></li>
+        <li class="next"><a href="#">Siguiente &rarr;</a></li>
+    </ul>
+</div>
