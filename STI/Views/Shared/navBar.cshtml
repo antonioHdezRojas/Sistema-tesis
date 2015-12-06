@@ -1,22 +1,22 @@
 ﻿<nav class="navbar navbar-fixed-top fondoAzul">
     <div class="container">
         <ul class="nav nav-tabs">
-            <li role="presentation"><a href="@Url.Action("datos","home")">@Session["nombre"]</a></li>
-            <li role="presentation"><a href="@Url.Action("inicio","home")">home</a></li>
             <li role="presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     Encuestas <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="EncuestasNav"><a href="@Url.Action("habitosDeEstudio","Encuesta")"><p>Habitos de estudio</p></a></li>
-                    <li class="EncuestasNav"><a href="@Url.Action("autoestima", "Encuesta")"><p>Autoestima</p></a></li>
-                    <li class="EncuestasNav"><a href="@Url.Action("matematicas","Encuesta")"><p>Matematicas</p></a></li>
-                    <li class="EncuestasNav"><a href="@Url.Action("comunicacion", "Encuesta")"><p>Comunicacion oral y escrita</p></a></li>
+                    <li id="habitosNav" class="EncuestasNav" onload="verifica('Habitos de Estudio')"><a href="@Url.Action("habitosDeEstudio","Encuesta")"><p>Habitos de estudio </p></a></li>
+                    <li id="autoestimaNav" class="EncuestasNav"><a href="@Url.Action("autoestima", "Encuesta")"><p>Autoestima </p></a></li>
+                    <li id="mateNav" class="EncuestasNav"><a href="@Url.Action("matematicas","Encuesta")"><p>Matematicas </p></a></li>
+                    <li id="comunicacionNav" class="EncuestasNav"><a href="@Url.Action("comunicacion", "Encuesta")"><p>Comunicacion oral y escrita </p></a></li>
                 </ul>
             </li>
             <li role="presentation"><a>Resultados</a></li>
             <li role="presentation"><a>Contacto</a></li>
             <li role="presentation" class="pull-right"><a href="@Url.Action("salir","home")">Salir</a></li>
+            <li role="presentation" class="pull-right"><a href="@Url.Action("conf","home")"><span class="glyphicon glyphicon-cog"></span></a></li>
+            <li role="presentation" class="pull-right"><a href="@Url.Action("inicio","home")"><span class="glyphicon glyphicon-home"></span></a></li>
         </ul>
 
     </div>

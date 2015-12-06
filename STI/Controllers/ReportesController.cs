@@ -60,7 +60,7 @@ namespace STI.Controllers
                 general = resultado.Single().Resultado;
                 catGeneral = resultado.Single().ResultadoClGeneral;
                 catFamilia = resultado.Single().ResultadoClFamilia;
-                catEscolar = resultado.Single().ResultadoClFamilia;
+                catEscolar = resultado.Single().ResultadoClEscolar;
             }
             if (general > 53)
                 ViewBag.mensaje = "Autoestima alta";

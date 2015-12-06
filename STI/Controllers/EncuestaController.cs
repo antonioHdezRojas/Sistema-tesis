@@ -12,8 +12,8 @@ namespace STI.Controllers
         private List<Pregunta> preguntas(string encuesta)
         {
             Base db = new Base();
-            var c = from categoria in db.Encuestas where categoria.Descripcion == encuesta select categoria.EncuestaID;
-            int cID = c.First();
+            var c = from categoria in db.Encuestas where categoria.Descripcion == encuesta select categoria.EncuestaID;            
+                int cID = c.First();            
             var pre = from p in db.Preguntas where p.EncuestaID == cID select p;
             int[] orden = ordenar(pre.Count());
             Pregunta[] preguntas = pre.ToArray();
@@ -168,14 +168,14 @@ namespace STI.Controllers
             return a;
         }
         [HttpPost]
-        private JsonResult encuestaTerminada(string enc)
+        public JsonResult encuestaTerminada(Encuesta e)
         {
             Base db = new Base();
-            List<Pregunta>p = preguntas(enc);
+            List<Pregunta>p = preguntas(e.Descripcion);
             if (p.Count > 0)
-                return Json(false);
+                return Json("false");
             else
-                return Json(true);
+                return Json("true");
         }
     }
 }
