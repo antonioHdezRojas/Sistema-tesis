@@ -2,84 +2,99 @@
 @{
     ViewBag.Title = "habEstudio";
 }
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    $(document).ready(function(){
+        drawChartHabitosEstudio();
+    })
+</script>
 <h2>Habitos de estudio</h2>
 @Html.Partial("navBar")
-<form>
-    <div class="form-group">
-        <label for="txtGeneral">Calificacion total @ViewBag.general</label>
-        <input type="text" class="form-control" id="txtGeneral" disabled value="@ViewBag.mensaje">
+<div class="row">
+    <div class="col-md-3">
+        <form>
+            <div class="form-group">
+                <label for="txtGeneral">Calificacion total @ViewBag.general</label>
+                <input type="text" data-cal="@ViewBag.general" class="form-control" id="txtGeneral" disabled value="@ViewBag.mensaje">
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.CatCon" id="catConcentracion">Concentracion</h5>
+                @if ((int?)ViewBag.CatCon > 12)
+            {
+                    <p>@ViewBag.mensajeCatCon</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("concentracion","Materiales")">material</a>
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.catRel" id="catRelInter">Relaciones Interpersonales</h5>
+                @if ((int?)ViewBag.catRel > 12)
+            {
+                    <p>@ViewBag.mensajeCatRel</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("relacionesInter", "Materiales")">material</a>
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.catMemoria" id="catMemoria">Memoria</h5>
+                @if ((int?)ViewBag.catMemoria > 12)
+            {
+                    <p>@ViewBag.mensajeMem</p>
+                }
+                else
+                {
+                    <a href="../Materiales/Memoria/Ahorcado/index.html">material</a>
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.catMotEst" id="motEstudio">Motivacion para estudiar</h5>
+                @if ((int?)ViewBag.catMotEst > 12)
+            {
+                    <p>@ViewBag.mensajeCatMotEst</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("motivacionEst", "Materiales")">material</a>
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.catAdmin" id="catAdmin">Administracion del tiempo</h5>
+                @if ((int?)ViewBag.catAdmin > 12)
+            {
+                    <p>@ViewBag.mensajeCatAdmin</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("adminDelTiempo", "Materiales")">material</a>
+                }
+                <br />
+            </div>
+            <div class="form-group">
+                <h5 data-cal="@ViewBag.catEva" id="catEva">Presentacion de evaluaciones</h5>
+                @if ((int?)ViewBag.catEva > 12)
+            {
+                    <p>@ViewBag.mensajeCatEva</p>
+                }
+                else
+                {
+                    <a href="@Url.Action("presentacionEva", "Materiales")">material</a>
+                }
+                <br />
+            </div>
+
+        </form>
+    </div>    
+    <div class="col-md-9">
+        <!--Div that will hold the pie chart-->
+        <div id="chartHabitos" style="width: 900px; height: 400px;"></div>
     </div>
-    <div class="form-group">
-        <h5>Concentracion</h5>
-        @if ((int?)ViewBag.CatCon > 12)
-        {
-            <p>@ViewBag.mensajeCatCon</p>
-        }
-        else
-        {
-            <a href = "@Url.Action("concentracion","Materiales")" >material</a >
-        }
-        <br />
-    </div>
-    <div class="form-group">
-        <h5>Relaciones Interpersonales</h5>
-        @if ((int?)ViewBag.catRel > 12)
-        {
-            <p>@ViewBag.mensajeCatRel</p>
-        }
-        else
-        {
-            <a href = "@Url.Action("relacionesInter", "Materiales")" >material</a >
-        }
-        <br />
-    </div>
-    <div class="form-group">
-        <h5>Memoria</h5>
-        @if ((int?)ViewBag.catMemoria > 12)
-        {
-            <p>@ViewBag.mensajeMem</p>
-        }
-        else
-        {
-            <a href = "../Materiales/Memoria/Ahorcado/index.html" >material</a >
-        }
-        <br />
-    </div>
-    <div class="form-group">
-        <h5>Motivacion para estudiar</h5>
-        @if ((int?)ViewBag.catMotEst > 12)
-        {
-            <p>@ViewBag.mensajeCatMotEst</p>
-        }
-        else
-        {
-            <a href = "@Url.Action("motivacionEst", "Materiales")" >material</a >
-        }
-        <br />
-    </div>
-    <div class="form-group">
-        <h5>Administracion del tiempo</h5>
-        @if ((int?)ViewBag.catAdmin > 12)
-        {
-            <p>@ViewBag.mensajeCatAdmin</p>
-        }
-        else
-        {
-            <a href = "@Url.Action("adminDelTiempo", "Materiales")" >material</a >
-        }
-        <br />
-    </div>
-    <div class="form-group">
-        <h5>APresentacion de evaluaciones</h5>
-        @if ((int?)ViewBag.catEva > 12)
-        {
-            <p>@ViewBag.mensajeCatEva</p>
-        }
-        else
-        {
-            <a href = "@Url.Action("presentacionEva", "Materiales")" >material</a >
-        }
-        <br />
-    </div>
-</form>
+</div>

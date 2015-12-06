@@ -79,6 +79,47 @@ function verifica(encuesta, li) {
     });
 };
 
+//graficas
 
+function drawChartAutoestima() {
 
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Puntos'],
+      ['Total',80],
+      ['Calificacion', parseInt($('#txtGeneral').data('cal'))],
+      ['General', parseInt($('#txtCatGeneral').data('cal'))],
+      ['Familia', parseInt($('#txtCatFamilia').data('cal'))],
+      ['Escolar', parseInt($('#txtCatEscolar').data('cal'))]
+    ]);
+
+    var options = {
+        title: 'Resultados'
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chartAutoestima'));
+
+    chart.draw(data, options);
+}
+function drawChartHabitosEstudio() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Puntos'],
+      ['Total', 120],
+      ['Calificacion', parseInt($('#txtGeneral').data('cal'))],
+      ['Concentracion', parseInt($('#catConcentracion').data('cal'))],
+      ['Relaciones interpersonales', parseInt($('#catRelInter').data('cal'))],
+      ['Memoria', parseInt($('#catMemoria').data('cal'))],
+      ['Motivacion para estudiar', parseInt($('#motEstudio').data('cal'))],
+      ['Administracion del tiempo', parseInt($('#catAdmin').data('cal'))],
+      ['Presentacion de evaluaciones', parseInt($('#catEva').data('cal'))]
+    ]);
+
+    var options = {
+        title: 'Resultados'
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chartHabitos'));
+
+    chart.draw(data, options);
+}
 
