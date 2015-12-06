@@ -9,7 +9,7 @@ namespace STI.Controllers
 {
     public class EncuestaController : Controller
     {
-        public List<Pregunta> preguntas(string encuesta)
+        private List<Pregunta> preguntas(string encuesta)
         {
             Base db = new Base();
             var c = from categoria in db.Encuestas where categoria.Descripcion == encuesta select categoria.EncuestaID;
@@ -18,14 +18,23 @@ namespace STI.Controllers
             int[] orden = ordenar(pre.Count());
             Pregunta[] preguntas = pre.ToArray();
             List<Pregunta> lista = new List<Pregunta>();
-            for(int i = 0; i< preguntas.Count();i++)
+            for (int i = 0; i < preguntas.Count(); i++)
             {
                 var p = preguntas[orden[i]];
                 var aux = from respuesta in db.Respuestas where respuesta.PreguntaId == p.PreguntaId select respuesta;
                 if (aux.Count() == 0)
                     lista.Add(p);
             }
-            ViewBag.ordenResp = ordenar(4);
+            int[,] ordenResp = new int[lista.Count, 4];
+            int a = 0; //indice de ciclo
+            foreach (var p in lista)
+            {
+                int[] aux = ordenar(4);
+                for (int j = 0; j < 4; j++)
+                    ordenResp[a, j] = aux[j];
+                a++;
+            }
+            ViewBag.ordenResp = ordenResp;
             return lista;
         }
         public ActionResult autoestima()
@@ -157,6 +166,16 @@ namespace STI.Controllers
             //se crea un vector de numeros aleatorios sin repeticion 
             a = Enumerable.Range(0, lim).OrderBy(x => Guid.NewGuid()).ToArray();
             return a;
+        }
+        [HttpPost]
+        private JsonResult encuestaTerminada(string enc)
+        {
+            Base db = new Base();
+            List<Pregunta>p = preguntas(enc);
+            if (p.Count > 0)
+                return Json(false);
+            else
+                return Json(true);
         }
     }
 }

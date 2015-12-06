@@ -2,9 +2,12 @@
 <table class="container table-striped">
     <tr>
         <td class="col-md-7"></td>
+        @{
+            string[] respuestas = new string[5] {"Totalmente de acuerdo","De acuerdo", "indeciso", "En desacuerdo", "Totalmente en desacuerdo" };
+            }
         @for (int i = 1; i < 6; i++)
             {
-            <td class="text-center col-md-1">@i.ToString()</td>
+            <td class="text-center col-md-1">@respuestas[i-1]</td>
         }
     </tr>
     @{ int j = 0;}

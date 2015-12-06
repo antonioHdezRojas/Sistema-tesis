@@ -48,3 +48,21 @@ function login() {
         }
     });
 };
+$(document).ready(function() {
+    $
+    $.ajax({
+        type: 'POST',                               // tipo de llamada (POST, GET)
+        url: '../Preguntas/guardar',                // el URL del método que vamos a llamar
+        data: JSON.stringify(data),           // los parámetros en formato JSON
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",                           // tipo de datos enviados al servidor
+        success: function (data) {                      // función que se va a ejecutar si el pedido resulta exitoso
+            console.log(data);
+        },
+        error: function (req, stat, err) {          // función que se va a ejecutar si el pedido falla
+            console.log("error de conexion");
+            console.log(id);
+        }
+    });
+});
+
