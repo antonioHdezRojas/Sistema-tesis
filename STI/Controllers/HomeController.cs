@@ -31,7 +31,7 @@ namespace STI.Controllers
             Base db = new Base();
             Alumno a = new Alumno();
             Profesor p = new Profesor();
-            var admin = from u in db.Profesores from cl in db.Claves where u.Nombre == c.login && (u.Nombre == cl.login && cl.password == c.password) select u;
+            var admin = from u in db.Profesores from cl in db.Claves where u.Nombre == c.login && cl.login == c.login && cl.password == c.password select u;            
             if (admin.Count() > 0)
             {
                 p = admin.First();
