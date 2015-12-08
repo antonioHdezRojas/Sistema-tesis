@@ -1,0 +1,69 @@
+﻿@model IEnumerable<STI.Models.Alumno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.no_cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ap_pat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ap_mat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BachilleratoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Promedio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ceneval)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.no_cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ap_pat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ap_mat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BachilleratoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promedio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ceneval)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AlumnoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AlumnoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AlumnoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -21,6 +21,7 @@ namespace STI.Models
         public DbSet<ResultadoEncHabEstudio> ResultadosEncHabEstudio { get; set; }
         public DbSet<ResultadoEncComunicacion> ResultadosEncComunicacion { get; set; }
         public DbSet<ResultadoEncMate> ResultadosEncMate { get; set; }
+        public DbSet<SubClasificacion> Subclasificaciones { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure Code First to ignore PluralizingTableName convention 
@@ -41,7 +42,7 @@ namespace STI.Models
         public float Promedio { get; set; }
         public int Ceneval { get; set; }
         //foreing keys
-        public ICollection<Respuesta> Respuestas { get; set; }       
+        public ICollection<Respuesta> Respuestas { get; set; }
     }
 
     public class Profesor
@@ -98,6 +99,7 @@ namespace STI.Models
         public string Descripcion { get; set; }
         public int EncuestaID { get; set; }
         public int? ClasificacionId { get; set; }
+        public int? SubClasificacionId { get; set; }
         public string Respuesta1 { get; set; }
         public string Respuesta2 { get; set; }
         public string Respuesta3 { get; set; }
@@ -138,9 +140,9 @@ namespace STI.Models
     public class ResultadoEncMate
     {
         public int ResultadoEncMateID { get; set; }
-        public int AlumnoID { get; set; }   
+        public int AlumnoID { get; set; }
         public int ResultadoClAritmetica { get; set; }
-        public int ResultadoClAlgebra { get; set; }        
+        public int ResultadoClAlgebra { get; set; }
         public int Resultado { get; set; }
         //foreing Keys
         public Alumno Alumno { get; set; }
@@ -148,9 +150,18 @@ namespace STI.Models
     public class ResultadoEncComunicacion
     {
         public int ResultadoEncComunicacionID { get; set; }
-        public int AlumnoID { get; set; }        
+        public int AlumnoID { get; set; }
         public int Resultado { get; set; }
         //foreing Keys
         public Alumno Alumno { get; set; }
+    }
+
+    public class SubClasificacion
+    {
+        public int SubClasificacionID { get; set; }
+        public int ClasificacionID { get; set; }
+        public string Descripcion { get; set; }
+        //foreing Keys
+        public Clasificacion Clasificacion { get; set; }
     }
 }

@@ -1,0 +1,74 @@
+﻿@model STI.Models.Alumno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Alumno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.no_cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.no_cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ap_pat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ap_pat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ap_mat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ap_mat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BachilleratoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BachilleratoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Promedio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promedio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ceneval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ceneval)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlumnoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

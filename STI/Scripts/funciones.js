@@ -71,7 +71,8 @@ function verifica(encuesta, li) {
             if (data == "true") {
                 mensaje.append(ok);
                 mensaje.addClass('text-success');
-                mensaje.parent().attr("href", "#");
+                dir = "../Reportes/"+mensaje.parent().data('link');
+                mensaje.parent().attr("href", dir);
             }
         },
         error: function (req, stat, err) {          // función que se va a ejecutar si el pedido falla           
@@ -84,41 +85,41 @@ function verifica(encuesta, li) {
 function drawChartAutoestima() {
 
     var data = google.visualization.arrayToDataTable([
-      ['Task', 'Puntos'],
-      ['Total',80],
-      ['Calificacion', parseInt($('#txtGeneral').data('cal'))],
-      ['General', parseInt($('#txtCatGeneral').data('cal'))],
-      ['Familia', parseInt($('#txtCatFamilia').data('cal'))],
-      ['Escolar', parseInt($('#txtCatEscolar').data('cal'))]
+      ['Resultados Autoestima', 'Maximo','Obtenido' ],
+      ['Calificacion', 80, parseInt($('#txtGeneral').data('cal'))],
+      ['General', 28, parseInt($('#txtCatGeneral').data('cal'))],
+      ['Familia', 24, parseInt($('#txtCatFamilia').data('cal'))],
+      ['Escolar', 28, parseInt($('#txtCatEscolar').data('cal'))]
     ]);
 
     var options = {
-        title: 'Resultados'
+        title: 'Resultados',
+        vAxis: { gridlines: { count: 7 } },
+        hAxis:{ viewWindow : {min: 0, max: 80}, ticks:[10,20,30,40,50,60,70,80] }
     };
 
-    var chart = new google.visualization.BarChart(document.getElementById('chartAutoestima'));
+    var chart = new google.charts.Bar(document.getElementById('chartAutoestima'));
 
     chart.draw(data, options);
 }
 function drawChartHabitosEstudio() {
 
     var data = google.visualization.arrayToDataTable([
-      ['Task', 'Puntos'],
-      ['Total', 120],
-      ['Calificacion', parseInt($('#txtGeneral').data('cal'))],
-      ['Concentracion', parseInt($('#catConcentracion').data('cal'))],
-      ['Relaciones interpersonales', parseInt($('#catRelInter').data('cal'))],
-      ['Memoria', parseInt($('#catMemoria').data('cal'))],
-      ['Motivacion para estudiar', parseInt($('#motEstudio').data('cal'))],
-      ['Administracion del tiempo', parseInt($('#catAdmin').data('cal'))],
-      ['Presentacion de evaluaciones', parseInt($('#catEva').data('cal'))]
+      ['Resultado habitos de estudio','Maximo','Obtenido'],    
+      ['Calificacion', 120,parseInt($('#txtGeneral').data('cal'))],
+      ['Concentracion',20, parseInt($('#catConcentracion').data('cal'))],
+      ['Relaciones interpersonales',20, parseInt($('#catRelInter').data('cal'))],
+      ['Memoria',20, parseInt($('#catMemoria').data('cal'))],
+      ['Motivacion para estudiar',20, parseInt($('#motEstudio').data('cal'))],
+      ['Administracion del tiempo',20, parseInt($('#catAdmin').data('cal'))],
+      ['Presentacion de evaluaciones',20, parseInt($('#catEva').data('cal'))]
     ]);
 
     var options = {
         title: 'Resultados'
     };
 
-    var chart = new google.visualization.BarChart(document.getElementById('chartHabitos'));
+    var chart = new google.charts.Bar(document.getElementById('chartHabitos'));
 
     chart.draw(data, options);
 }
