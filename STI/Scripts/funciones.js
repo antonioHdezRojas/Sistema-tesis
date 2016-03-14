@@ -43,7 +43,7 @@ function login() {
             if (data == "home")
                 location.href = "../home/inicio";
             else if (data == "admin")
-                location.href = "../home/inicioAdmin";
+                location.href = "../adminHome/index";
             else {
                 $("#alert").parent().remove();
                 $("#formLogin").prepend("<li><div class='alert alert-danger' role='lert' id='alert'>Usuario y/o contraseña incorrectos</div></li>");
@@ -124,3 +124,8 @@ function drawChartHabitosEstudio() {
     chart.draw(data, options);
 }
 
+//archivo
+function getUrlArchivo() {
+    var file = document.getElementById("archivo");
+    console.log(file[0].url);
+}

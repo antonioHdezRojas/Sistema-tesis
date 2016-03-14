@@ -22,6 +22,9 @@ namespace STI.Models
         public DbSet<ResultadoEncComunicacion> ResultadosEncComunicacion { get; set; }
         public DbSet<ResultadoEncMate> ResultadosEncMate { get; set; }
         public DbSet<SubClasificacion> Subclasificaciones { get; set; }
+        public DbSet<Institucion> Instituciones { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Coordinador> Coordinadores { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure Code First to ignore PluralizingTableName convention 
@@ -41,14 +44,38 @@ namespace STI.Models
         public int BachilleratoId { get; set; }
         public float Promedio { get; set; }
         public int Ceneval { get; set; }
+        public Byte AceptarEncuesta { get; set; }        
         //foreing keys
         public ICollection<Respuesta> Respuestas { get; set; }
+        public Institucion Institucion { get; set; }
+    }
+    public class Institucion
+    {
+        public int InstitucionId { get; set; }
+        public string Nombre { get; set; }
+        public string Estado { get; set; }
+        //foreing keys
+        public ICollection<Alumno> Alumnos { get; set; }
+        public Coordinador Coordinador { get; set; }
+    }
+
+    public class Admin
+    {
+        public int AdminId { get; set; }
+        public string Nombre { get; set; }
+    }
+    public class Coordinador
+    {
+        public int CoordinadorId { get; set; }
+        public string Nombre { get; set; }                
     }
 
     public class Profesor
     {
         public int ProfesorId { get; set; }
         public string Nombre { get; set; }
+        //foreing keys
+        public ICollection<Alumno> Alumnos { get; set; }
     }
 
     public class Encuesta

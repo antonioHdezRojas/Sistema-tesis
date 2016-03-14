@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\adminHomeController.cs" />
     <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagedData.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -206,7 +208,6 @@
     <Content Include="Views\Home\inicio.cshtml" />
     <Content Include="Views\Reportes\autoestima.cshtml" />
     <Content Include="Views\Shared\navBar.cshtml" />
-    <Content Include="Views\Home\inicioAdmin.cshtml" />
     <Content Include="Views\Encuesta\habitosDeEstudio.cshtml" />
     <Content Include="Views\Reportes\habEstudio.cshtml" />
     <Content Include="Views\Materiales\concentracion.cshtml" />
@@ -226,9 +227,16 @@
     <Content Include="Views\Alumnos\Details.cshtml" />
     <Content Include="Views\Alumnos\Edit.cshtml" />
     <Content Include="Views\Alumnos\Index.cshtml" />
+    <Content Include="Views\Shared\adminNavBar.cshtml" />
+    <Content Include="Views\adminHome\Index.cshtml" />
+    <Content Include="Views\adminHome\alumnos.cshtml" />
+    <Content Include="Views\adminHome\modalArchivo.cshtml" />
+    <Content Include="Views\Encuesta\cuerpoPrueba.cshtml" />
+    <Content Include="Views\Encuesta\pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\paginado\" />
     <Folder Include="Views\Preguntas\" />
   </ItemGroup>
   <ItemGroup>

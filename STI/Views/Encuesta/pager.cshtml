@@ -1,0 +1,50 @@
+﻿@model STI.Helpers.PagedData<STI.Models.Pregunta>
+@{
+    ViewBag.Title = "pager";
+}
+<script type="text/javascript">
+    $().ready(function () {
+        $(".page-number").on("click", function () {
+
+            var page = parseInt($(this).html());
+
+            $.ajax({
+                url: '@Url.Action("cuerpoPrueba")',
+                data: { "page": page },
+                success: function (data) {
+                    $("#person-list").html(data);
+                }
+            });
+        });
+    });
+</script>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Desc
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.Data)
+        {
+            <tr>
+                <td>
+                    @person.Descripcion
+                </td>                
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                @for (int i = 1; i <= Model.NumberOfPages; i++)
+                {
+                    <a class="page-number" href="#">@i</a>
+                }
+            </td>
+        </tr>
+    </tfoot>
+</table>
+

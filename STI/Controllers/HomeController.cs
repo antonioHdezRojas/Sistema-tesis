@@ -38,6 +38,7 @@ namespace STI.Controllers
                 Session["loged"] = true;
                 Session["nombre"] = p.Nombre;
                 Session["userID"] = p.ProfesorId;
+                Session["admin"] = true;
                 return Json("admin");                
             }
             else
@@ -54,6 +55,7 @@ namespace STI.Controllers
                         Session["nombre"] = al.First().Nombre;
                         Session["userID"] = al.First().AlumnoId;
                         Session["noCuenta"] = al.First().no_cuenta;
+                        Session["admin"] = false;
                         return Json("home");
                     }                    
                 }

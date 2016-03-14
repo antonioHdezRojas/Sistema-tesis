@@ -4,11 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using STI.Models;
+using STI.Helpers;
+
+
 
 namespace STI.Controllers
 {
     public class EncuestaController : Controller
     {
+        public const int PageSize1 = 5;
+        public const int PageSize2 = 1;
         private List<Pregunta> preguntas(string encuesta)
         {
             Base db = new Base();
@@ -176,6 +181,30 @@ namespace STI.Controllers
                 return Json("false");
             else
                 return Json("true");
+        }
+        public ActionResult pager()
+        {
+            var preguntas = new PagedData<Pregunta>();
+            using (var ctx = new Base())
+            {                
+                preguntas.Data = ctx.Preguntas.Take(PageSize1).ToList();
+                preguntas.NumberOfPages = Convert.ToInt32(Math.Ceiling((Double)ctx.Preguntas.Count() / PageSize1));
+                preguntas.CurrentPage = 1;
+            }
+            return View(preguntas);
+        }
+        public ActionResult cuerpoPrueba(int page)
+        {
+            var preguntas = new PagedData<Pregunta>();
+            List<Pregunta> a = new List<Pregunta>();           
+            using(var ctx = new Base())
+            {
+                a = ctx.Preguntas.ToList();
+                preguntas.Data = a.Skip(PageSize1 * (page - 1)).Take(PageSize1);
+                preguntas.NumberOfPages = Convert.ToInt32(Math.Ceiling((double)ctx.Preguntas.Count() / PageSize1));
+                preguntas.CurrentPage = page;
+            }
+            return PartialView(preguntas);
         }
     }
 }

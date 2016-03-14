@@ -1,0 +1,14 @@
+﻿@model STI.Helpers.PagedData<STI.Models.Pregunta>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>People</h2>
+<p>
+    @Html.ActionLink("Add Person", "Add")
+</p>
+
+<div id="person-list">
+    @Html.Partial("cuerpoPrueba")
+</div>

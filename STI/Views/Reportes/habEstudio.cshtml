@@ -5,20 +5,20 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load("visualization", "1.1", { packages: ["bar"] });
-    $(document).ready(function(){
+    $(document).ready(function () {
         drawChartHabitosEstudio();
     })
 </script>
 <h2>Habitos de estudio</h2>
 @Html.Partial("navBar")
 <div class="row">
-    <div class="col-md-3">
-        <form>
-            <div class="form-group">
-                <label for="txtGeneral">Calificacion total @ViewBag.general</label>
-                <input type="text" data-cal="@ViewBag.general" class="form-control" id="txtGeneral" disabled value="@ViewBag.mensaje">
-            </div>
-            <div class="form-group">
+    <div class="col-md-12">
+        <div id="chartHabitos" style="width: 100%; height: 40%;"></div>
+    </div>
+</div>
+<form>
+    <div class="row">                    
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.CatCon" id="catConcentracion">Concentracion</h5>
                 @if ((int?)ViewBag.CatCon > 12)
             {
@@ -30,7 +30,7 @@
                 }
                 <br />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.catRel" id="catRelInter">Relaciones Interpersonales</h5>
                 @if ((int?)ViewBag.catRel > 12)
             {
@@ -42,7 +42,7 @@
                 }
                 <br />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.catMemoria" id="catMemoria">Memoria</h5>
                 @if ((int?)ViewBag.catMemoria > 12)
             {
@@ -54,7 +54,9 @@
                 }
                 <br />
             </div>
-            <div class="form-group">
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.catMotEst" id="motEstudio">Motivacion para estudiar</h5>
                 @if ((int?)ViewBag.catMotEst > 12)
             {
@@ -66,7 +68,7 @@
                 }
                 <br />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.catAdmin" id="catAdmin">Administracion del tiempo</h5>
                 @if ((int?)ViewBag.catAdmin > 12)
             {
@@ -78,7 +80,7 @@
                 }
                 <br />
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <h5 data-cal="@ViewBag.catEva" id="catEva">Presentacion de evaluaciones</h5>
                 @if ((int?)ViewBag.catEva > 12)
             {
@@ -90,11 +92,6 @@
                 }
                 <br />
             </div>
-
-        </form>
-    </div>    
-    <div class="col-md-9">
-        <!--Div that will hold the pie chart-->
-        <div id="chartHabitos" style="width: 900px; height: 400px;"></div>
+        </div>
     </div>
-</div>
+</form>
