@@ -37,8 +37,7 @@ namespace STI.Controllers
                 p = admin.First();
                 Session["loged"] = true;
                 Session["nombre"] = p.Nombre;
-                Session["userID"] = p.ProfesorId;
-                Session["admin"] = true;
+                Session["userID"] = p.ProfesorId;                
                 return Json("admin");                
             }
             else
@@ -55,7 +54,7 @@ namespace STI.Controllers
                         Session["nombre"] = al.First().Nombre;
                         Session["userID"] = al.First().AlumnoId;
                         Session["noCuenta"] = al.First().no_cuenta;
-                        Session["admin"] = false;
+                        Session["aviso"] = al.First().AceptarEncuesta;
                         return Json("home");
                     }                    
                 }
@@ -116,7 +115,20 @@ namespace STI.Controllers
             bd.Claves.Add(c);
             bd.SaveChanges();
             Response.Redirect(Url.Action("index", "home"));
+        }             
+        public JsonResult avisoPrivacidad(bool a)
+        {
+            int alumnoID = (int)Session["userID"];
+            Base db = new Base();            
+            var x = from al in db.Alumnos where al.AlumnoId == alumnoID select al;
+            if (a)
+                x.Single().AceptarEncuesta = 1;
+            else
+                x.Single().AceptarEncuesta = 2;
+            int aux = x.Single().AceptarEncuesta;
+            Session["aviso"] = aux;
+            db.SaveChanges();
+            return Json("guardado");
         }
-
     }
 }

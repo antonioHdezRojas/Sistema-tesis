@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "inicio";
 }
 @Html.Partial("navBar")
@@ -15,13 +16,28 @@
 
     </div>
     @{
-        string[] links = new string[4] {Url.Action("habEstudio","Reportes"), Url.Action("autoestima","Reportes"), Url.Action("mate", "Reportes"), Url.Action("comunicacion","Reportes") };
-        string[] enc = new string[4] {"Habitos de estudio","Autoestima","Matematicas","Comunicacion oral y escrita"};
+        string[] links = new string[4] { Url.Action("habEstudio", "Reportes"), Url.Action("autoestima", "Reportes"), Url.Action("mate", "Reportes"), Url.Action("comunicacion", "Reportes") };
+        string[] enc = new string[4] { "Habitos de estudio", "Autoestima", "Matematicas", "Comunicacion oral y escrita" };
         int i = 0;
     }
+
     <div class="col-md-9">
-        @foreach (var a in links)
+        @{            
+            int aux = int.Parse(Session["aviso"].ToString());
+            int id = (int)Session["userID"];
+        }        
+        @if (aux == 0)
         {
+            <script>
+                $(document).ready(function () {                    
+                    mensaje(@id)
+                });               
+            </script>
+        }
+        else if (aux == 1)
+        {
+            foreach (var a in links)
+            {
             <div class="row">
                 <form action="@links[i]">
                     <div class="col-md-9">
@@ -33,12 +49,14 @@
                                 <div class="col-md-3">
                                     <button class="btn btn-primary pull-right">Reporte</button> <hr />
                                 </div>
-                            </div>                                                  
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
-            i++;
+                i++;
+            }
         }
     </div>
 </div>
+<script src="~/Scripts/mensajePrivacidadAlumno.js"></script>
